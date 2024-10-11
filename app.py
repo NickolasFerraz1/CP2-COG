@@ -16,9 +16,10 @@ def home():
 # Rota para realizar previsões usando o modelo
 @app.route("/predict", methods=["POST"])
 def predict():
+    # Obter os dados enviados no corpo da requisição
+    dados = request.get_json()
+        
     try:
-        # Obter os dados enviados no corpo da requisição
-        dados = request.get_json()
         
         # Converter os dados para um formato adequado
         X = np.array(dados["features"]).reshape(1, -1)
