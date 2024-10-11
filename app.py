@@ -7,6 +7,10 @@ app = Flask(__name__)
 # Carregar o modelo treinado (o arquivo modelo_logistico.pkl deve estar no mesmo diretório)
 modelo = joblib.load("modelo_logistico.pkl")
 
+@app.route("/test_post", methods=["POST"])
+def test_post():
+    return jsonify({"message": "POST funcionando!"}), 200
+
 # Rota principal para previsão
 @app.route("/", methods=["POST"])
 def predict():
